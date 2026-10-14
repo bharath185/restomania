@@ -1,0 +1,13 @@
+{
+  "name": "@repo/config",
+  "version": "1.0.0",
+  "private": true,
+  "files": [
+    "eslint-base.js",
+    "eslint-next.js",
+    "eslint-nest.js",
+    "tsconfig.base.json",
+    "tsconfig.next.json",
+    "tsconfig.nest.json"
+  ]
+}

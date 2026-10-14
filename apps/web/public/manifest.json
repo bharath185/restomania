@@ -1,0 +1,9 @@
+{
+  "name": "Restaurant Ordering App",
+  "short_name": "Order App",
+  "icons": [],
+  "start_url": "/menu",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#FF6B35"
+}

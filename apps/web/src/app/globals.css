@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: 19 79% 58%;
+    --color-primary-foreground: 0 0% 100%;
+    --color-secondary: 210 19% 23%;
+    --color-secondary-foreground: 0 0% 100%;
+    --color-accent: 33 84% 83%;
+    --color-accent-foreground: 0 0% 10%;
+    --font-family: 'Inter', system-ui, sans-serif;
+
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --border: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground; }
+}
+
+.spinner {
+  border: 3px solid rgba(0,0,0,0.1);
+  border-left-color: hsl(var(--color-primary));
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-new {
+  0%, 100% { box-shadow: 0 0 0 0 hsl(var(--color-primary) / 0.4); }
+  50% { box-shadow: 0 0 0 8px hsl(var(--color-primary) / 0); }
+}
+
+.pulse-new {
+  animation: pulse-new 1.5s ease-in-out 3;
+}
