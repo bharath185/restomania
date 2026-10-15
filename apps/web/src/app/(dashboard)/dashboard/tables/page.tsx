@@ -56,8 +56,8 @@ export default function TablesPage() {
   const generateQr = useMutation({
     mutationFn: (tableId: string) => api.generateQr(tableId),
     onSuccess: (res) => {
-      const data = (res.data?.data ?? res.data) as { qrCodeDataUrl: string; tableNumber: string; token: string };
-      setActiveQr({ tableNumber: data.tableNumber, dataUrl: data.qrCodeDataUrl, token: data.token });
+      const data = (res.data?.data ?? res.data) as unknown as { qrCodeDataUrl?: string; tableNumber?: string; token?: string };
+      setActiveQr({ tableNumber: data.tableNumber ?? '1', dataUrl: data.qrCodeDataUrl ?? '', token: data.token ?? '' });
     },
   });
 

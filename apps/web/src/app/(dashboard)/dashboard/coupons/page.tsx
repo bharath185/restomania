@@ -29,7 +29,7 @@ export default function CouponsPage() {
     queryKey: ['coupons'],
     queryFn: async () => {
       const res = await api.getCoupons();
-      return res.data.data as Coupon[];
+      return (res.data?.data ?? res.data) as unknown as Coupon[];
     },
   });
 

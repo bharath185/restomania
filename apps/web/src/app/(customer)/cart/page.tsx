@@ -18,7 +18,7 @@ export default function CartPage() {
   const [couponCode, setCouponCode] = useState('');
   const [couponDiscount, setCouponDiscount] = useState(0);
   const [orderType, setOrderType] = useState<'dine_in' | 'takeaway'>('dine_in');
-  const [paymentMethod, setPaymentMethod] = useState<'cash' | 'razorpay'>('cash');
+  const [paymentMethod, setPaymentMethod] = useState<'counter' | 'upi_direct'>('counter');
   const [specialNotes, setSpecialNotes] = useState('');
   const [couponSuccess, setCouponSuccess] = useState(false);
 
@@ -223,31 +223,44 @@ export default function CartPage() {
                 </div>
 
                 <div>
-                  <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2 block">
-                    Payment Method
-                  </label>
+                  <div className="flex items-center justify-between mb-2">
+                    <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground block">
+                      Direct Restaurant Settlement
+                    </label>
+                    <span className="text-[10px] text-emerald-600 font-bold bg-emerald-500/10 px-2 py-0.5 rounded-full">
+                      Zero Gateway Fee
+                    </span>
+                  </div>
                   <div className="grid grid-cols-2 gap-2">
                     <button
                       type="button"
-                      onClick={() => setPaymentMethod('cash')}
-                      className={`p-3 rounded-xl border text-xs font-bold flex items-center justify-center gap-2 transition ${
-                        paymentMethod === 'cash'
+                      onClick={() => setPaymentMethod('counter')}
+                      className={`p-3 rounded-xl border text-xs font-bold flex flex-col items-center justify-center gap-1 transition ${
+                        paymentMethod === 'counter'
                           ? 'border-primary bg-primary/10 text-primary ring-2 ring-primary/20'
                           : 'border-border bg-background text-muted-foreground hover:bg-muted'
                       }`}
                     >
-                      <Banknote size={15} /> Cash at Counter
+                      <div className="flex items-center gap-1.5 font-bold">
+                        <Banknote size={15} />
+                        <span>Pay at Counter</span>
+                      </div>
+                      <span className="text-[10px] opacity-75 font-normal">Cash / Bill to Table</span>
                     </button>
                     <button
                       type="button"
-                      onClick={() => setPaymentMethod('razorpay')}
-                      className={`p-3 rounded-xl border text-xs font-bold flex items-center justify-center gap-2 transition ${
-                        paymentMethod === 'razorpay'
+                      onClick={() => setPaymentMethod('upi_direct')}
+                      className={`p-3 rounded-xl border text-xs font-bold flex flex-col items-center justify-center gap-1 transition ${
+                        paymentMethod === 'upi_direct'
                           ? 'border-primary bg-primary/10 text-primary ring-2 ring-primary/20'
                           : 'border-border bg-background text-muted-foreground hover:bg-muted'
                       }`}
                     >
-                      <CreditCard size={15} /> UPI / Online
+                      <div className="flex items-center gap-1.5 font-bold">
+                        <CreditCard size={15} />
+                        <span>Direct UPI QR</span>
+                      </div>
+                      <span className="text-[10px] opacity-75 font-normal">Scan Table / Desk QR</span>
                     </button>
                   </div>
                 </div>

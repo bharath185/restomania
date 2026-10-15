@@ -17,7 +17,7 @@ export default function SettingsPage() {
     queryKey: ['branding-settings'],
     queryFn: async () => {
       const res = await api.getBranding();
-      return res.data.data as RestaurantBranding;
+      return (res.data?.data ?? res.data) as unknown as RestaurantBranding;
     },
   });
 

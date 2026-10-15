@@ -42,7 +42,7 @@ export default function OrderTrackingPage() {
     queryKey: ['order', id],
     queryFn: async () => {
       const res = await api.getOrder(id);
-      return (res.data?.data ?? res.data) as Order;
+      return (res.data?.data ?? res.data) as unknown as Order;
     },
     refetchInterval: 6000,
   });
